@@ -11,6 +11,7 @@ class cBall
         eDir directions;
 
     public:
+        // default constructor of the ball. Will default to being in the center (original position) and be at rest.
         cBall(int posX, int posY){
             originalX = posX;
             originalY = posY;
@@ -18,10 +19,26 @@ class cBall
             directions = STOP;
         }
 
+        // This resets the ball to the center position and will stop the ball 
         void reset(){
             x = originalX, y = originalY;
             directions = STOP;
         }
+
+        void changeDirection(eDir d){
+            directions = d;
+        }
+
+        void randomDirection(){
+            directions = (eDir) ((rand() % 6) + 1);
+        }
+
+        // From here, we have our getters
+        int getX(){ return x; }
+
+        int getY(){ return y; }
+
+        eDir getDirection(){ return directions; }
 
 };
 
