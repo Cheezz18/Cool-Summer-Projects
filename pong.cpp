@@ -1,4 +1,6 @@
 #include <iostream>
+#include <time.h>
+#include <conio.h>
 using namespace std;
 
 enum eDir { STOP = 0, LEFT = 1, UPLEFT = 2, DOWNLEFT = 3, RIGHT = 4, UPRIGHT = 5, DOWNRIGHT = 6};
@@ -123,33 +125,27 @@ class cGameManager{
         cPaddle * player2;
 
     public:
+        cGameManager(int w, int h){
+            srand(time(NULL));
+            quit = false;
+            p1Up = 'w'; p1Down = 's';
+            p2Up = 'i'; p2Down = 'k'; 
+            p1Points = p2Points = 0;
+            width = w; height = h;
+            ball = new cBall(w / 2, h / 2);
+            player1 = new cPaddle(1, h/2 - 3);
+            player2 = new cPaddle(w - 2 , h/2 - 3);
+        }
+
+        ~cGameManager(){
+            delete ball;
+            delete player1;
+            delete player2;
+        }
 
 };
 
 int main(){
-
-    cBall c(0, 0);
-    cout << c << endl;
-    c.randomDirection();
-    cout << c << endl;
-    c.move();
-    cout << c << endl;
-    c.randomDirection();
-    c.move();
-    cout << c << endl;
-    c.randomDirection();
-    c.move();
-    cout << c << endl;
-
-    cPaddle p1(0, 0);
-    cPaddle p2(10, 0);
-
-    cout << p1 << endl;
-    cout << p2 << endl;
-    p1.moveUp();
-    p2.moveDown();
-    cout << p1 << endl;
-    cout << p2 << endl;
 
     return 0;
 }
