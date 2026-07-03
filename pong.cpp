@@ -143,6 +143,18 @@ class cGameManager{
             delete player2;
         }
 
+        void ScoreUp(cPaddle * player){
+            if (player == player1){
+                p1Points++;
+            }
+            else if (player == player2){
+                p2Points++;
+            }
+
+            ball->reset();
+            player1->Reset();
+            player2->Reset();
+        }
 };
 
 int main(){
