@@ -96,6 +96,19 @@ class cPaddle{
             y = posY;
         }
 
+        void Reset() { x = originalX;  y = originalY; }
+
+        int getX(){ return x; }
+        int getY(){ return y; }
+
+        void moveUp(){ y++;}
+        void moveDown(){ y--;}
+
+        friend ostream & operator<<(ostream & o, cPaddle c){
+            o << "Paddle [" << c.x << "," << c.y << "]";
+            return o;
+        }
+
 };
 
 int main(){
@@ -112,6 +125,16 @@ int main(){
     c.randomDirection();
     c.move();
     cout << c << endl;
+
+    cPaddle p1(0, 0);
+    cPaddle p2(10, 0);
+
+    cout << p1 << endl;
+    cout << p2 << endl;
+    p1.moveUp();
+    p2.moveDown();
+    cout << p1 << endl;
+    cout << p2 << endl;
 
     return 0;
 }
