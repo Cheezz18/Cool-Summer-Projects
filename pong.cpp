@@ -111,6 +111,21 @@ class cPaddle{
 
 };
 
+class cGameManager{
+
+    private:
+        int width, height;
+        int p1Points, p2Points;
+        char p1Up, p1Down, p2Up, p2Down;
+        bool quit;
+        cBall * ball;
+        cPaddle * player1;
+        cPaddle * player2;
+
+    public:
+
+};
+
 int main(){
 
     cBall c(0, 0);
