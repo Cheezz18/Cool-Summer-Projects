@@ -1,6 +1,7 @@
 #include <iostream>
 #include <time.h>
 #include <conio.h>
+#include <stdlib.h>
 using namespace std;
 
 enum eDir { STOP = 0, LEFT = 1, UPLEFT = 2, DOWNLEFT = 3, RIGHT = 4, UPRIGHT = 5, DOWNRIGHT = 6};
@@ -137,12 +138,14 @@ class cGameManager{
             player2 = new cPaddle(w - 2 , h/2 - 3);
         }
 
+        // This is  the destructor. Clears the memory of the paddles and ball we just allocated for.
         ~cGameManager(){
             delete ball;
             delete player1;
             delete player2;
         }
 
+        // This function will increase the score of a player by one. Will take in a player pointer. Then it will reset when the point is earned
         void ScoreUp(cPaddle * player){
             if (player == player1){
                 p1Points++;
@@ -155,9 +158,51 @@ class cGameManager{
             player1->Reset();
             player2->Reset();
         }
+
+        void Draw(){
+            system("cls");
+
+            // Draws the whole top wall
+            for (int i = 0; i < width + 2; i++){
+                cout << "#" << endl;
+            }
+
+            for (int i = 0; i < height; i++){
+                for (int j = 0; j < width; j++){
+                    int ballx = ball->getX();
+                    int bally = ball->getY();
+                    int player1x = player1->getX();
+                    int player2x = player2->getX();
+                    int player1y = player1->getY();
+                    int player2y = player2->getY();
+
+                    // Draws left wall
+                    if (j == 0){
+                        cout << "#";
+                    }
+
+                    if (ballx == j && bally == i){
+                        cout << "O";
+                    }
+                    
+                    // Draws right wall
+                    if (j == width - 1){
+                        cout << "#";
+                    }
+                }
+            }
+
+            // Draws the whole bottom wall
+            for (int i = 0; i < width + 2; i++){
+                cout << "#" << endl;
+            }
+        }
 };
 
 int main(){
+
+    cGameManager c(40, 20);
+    c.Draw();
 
     return 0;
 }
