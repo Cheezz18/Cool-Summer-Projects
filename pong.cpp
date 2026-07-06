@@ -181,8 +181,20 @@ class cGameManager{
                         cout << "#";
                     }
 
+                    // Ball
                     if (ballx == j && bally == i){
                         cout << "O";
+                    }
+                    // Player 1
+                    else if (player1x == j && player1y == i){
+                        cout << "#";
+                    }
+                    // Player 2
+                    else if (player2x == j && player2y == i){
+                        cout << "#";
+                    }
+                    else {
+                        cout << " ";
                     }
                     
                     // Draws right wall
@@ -190,6 +202,7 @@ class cGameManager{
                         cout << "#";
                     }
                 }
+                cout << endl;
             }
 
             // Draws the whole bottom wall
