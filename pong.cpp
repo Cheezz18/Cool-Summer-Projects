@@ -235,6 +235,52 @@ class cGameManager{
                 cout << "\xB2";
             }
         }
+
+        void Input(){
+
+            ball->move();
+
+            int ballx = ball->getX();
+            int bally = ball->getY();
+            int player1x = player1->getX();
+            int player2x = player2->getX();
+            int player1y = player1->getY();
+            int player2y = player2->getY();
+
+
+            if (_kbhit()){
+                
+                char current = _getch();
+                if (current == p1Up){
+                    if (player1y > 0){
+                        player1->moveUp();
+                    }
+                }
+                if (current == p2Up){
+                    if (player2y > 0){
+                        player2->moveUp();
+                    }
+                }
+                if (current == p1Down){
+                    if (player1y + 4 < height){
+                        player1->moveDown();
+                    }
+                }
+                if (current == p2Down){
+                    if (player2y + 4 < height){
+                        player2->moveDown();
+                    }
+                }
+
+                if (ball->getDirection() == STOP){
+                    ball->randomDirection();
+                }
+
+                if (current == 'q'){
+                    quit = true;
+                }
+            }
+        }
 };
 
 int main(){
