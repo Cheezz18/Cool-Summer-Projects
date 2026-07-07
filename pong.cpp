@@ -162,10 +162,13 @@ class cGameManager{
         void Draw(){
             system("cls");
 
+            // use windows key + r to get custom looks for the pong paddles and the wall
+
             // Draws the whole top wall
             for (int i = 0; i < width + 2; i++){
-                cout << "#" << endl;
+                cout << "\xB2";
             }
+            cout << endl;
 
             for (int i = 0; i < height; i++){
                 for (int j = 0; j < width; j++){
@@ -178,20 +181,42 @@ class cGameManager{
 
                     // Draws left wall
                     if (j == 0){
-                        cout << "#";
+                        cout << "\xB2";
                     }
 
                     // Ball
                     if (ballx == j && bally == i){
                         cout << "O";
                     }
+
                     // Player 1
+                    // the other else if statements with player 1 simply adds more area to player 1
                     else if (player1x == j && player1y == i){
-                        cout << "#";
+                        cout << "\xDB";
                     }
+                    else if (player1x == j && player1y + 1 == i){
+                        cout << "\xDB";
+                    }
+                    else if (player1x == j && player1y + 2 == i){
+                        cout << "\xDB";
+                    }
+                    else if (player1x == j && player1y + 3 == i){
+                        cout << "\xDB";
+                    }
+
                     // Player 2
+                    // the other else if statements with player 1 simply adds more area to player 2
                     else if (player2x == j && player2y == i){
-                        cout << "#";
+                        cout << "\xDB";
+                    }
+                    else if (player2x == j && player2y + 1 == i){
+                        cout << "\xDB";
+                    }
+                    else if (player2x == j && player2y + 2 == i){
+                        cout << "\xDB";
+                    }
+                    else if (player2x == j && player2y + 3 == i){
+                        cout << "\xDB";
                     }
                     else {
                         cout << " ";
@@ -199,7 +224,7 @@ class cGameManager{
                     
                     // Draws right wall
                     if (j == width - 1){
-                        cout << "#";
+                        cout << "\xB2";
                     }
                 }
                 cout << endl;
@@ -207,7 +232,7 @@ class cGameManager{
 
             // Draws the whole bottom wall
             for (int i = 0; i < width + 2; i++){
-                cout << "#" << endl;
+                cout << "\xB2";
             }
         }
 };
